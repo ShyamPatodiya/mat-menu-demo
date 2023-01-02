@@ -1,0 +1,29 @@
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <!-- Dynamic Column -->
+    <ng-container *ngFor="let col of columnsSet;let i = index" [matColumnDef]="col">
+        <th mat-header-cell *matHeaderCellDef>{{ col }}</th>
+        <td mat-cell *matCellDef="let row">{{ row[col] }}</td>
+        <ng-container *ngIf="showTotalRow">
+            <td mat-footer-cell *matFooterCellDef="let row">
+                {{ row }}
+                <!-- {{ col }}
+                <br>
+                {{ totalRow[i] }}
+                <br> -->
+                <!-- {{ totalRow[i]?.[col] || '' }} -->
+                <!-- <br>
+                {{ totalRow[i] == col ? totalRow[i][col] ? totalRow[i][col] : 0 : '' }} -->
+                <!-- {{ totalRow[i]?.[col] ? totalRow[i][col] : totalRow[i]?.[col] == col ? '' : ''}} -->
+                <ng-container *ngIf="hasProp(totalRow[i], col); else noPropFound">
+                    {{totalRow[i][col] || 0}}
+                </ng-container>
+                <ng-template #noPropFound></ng-template>
+            </td>
+        </ng-container>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="columnsSet"></tr>
+    <tr mat-row *matRowDef="let row; columns: columnsSet"></tr>
+    <ng-container *ngIf="showTotalRow">
+        <tr mat-footer-row *matFooterRowDef="columnsSet"></tr>
+    </ng-container>
+</table>

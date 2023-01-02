@@ -1,0 +1,25 @@
+<h1>Searchable Mat-menu in Button</h1>
+<br>
+<div style="width: 100%">
+    <button mat-raised-button [matMenuTriggerFor]="menu" style="margin-left: 50vw">Menu</button>
+    <mat-menu #menu="matMenu" style="max-height: 50vh">
+        <mat-form-field>
+            <mat-label>Search Text</mat-label>
+            <input id="searchBox1" matInput (keyup)="filterOptions($event.target); showEle($event)"
+                (click)="$event.stopPropagation()" #searchInput autocomplete="off" mat-menu-item style="cursor: text;">
+        </mat-form-field>
+        <div style="max-height: 200px; overflow: auto;">
+            <option mat-menu-item *ngFor="let option of options">
+                {{option.name}}
+            </option>
+            <!-- <button mat-menu-item *ngFor="let option of options" (click)="showEle()">
+        {{option.name}}
+      </button> -->
+            <!-- <mat-option *ngFor="let option of options" (click)="showEle()">
+        <button mat-raised-button>
+          {{option.name}}
+        </button>
+      </mat-option> -->
+        </div>
+    </mat-menu>
+</div>

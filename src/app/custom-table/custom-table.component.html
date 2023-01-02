@@ -1,0 +1,12 @@
+<h1>Dynamic(Custom) Mat-Table</h1>
+<h3>More feature adding soon.....</h3>
+<div *ngIf="isLoading == 0">Loading...</div>
+<div *ngIf="isLoading == 1" style="max-height: 50vh; max-width: 100%; overflow: auto;">
+    <app-custom-table-detail [columnsSet]="tableColumns" [dataSet]="dataList" [totalColumns]="totalOfCols"
+        [showTotalRow]="true">
+        Loading...
+    </app-custom-table-detail>
+</div>
+<div *ngIf="isLoading == 2">
+    No data
+</div>

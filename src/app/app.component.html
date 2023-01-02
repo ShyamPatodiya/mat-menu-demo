@@ -1,0 +1,18 @@
+<h1>Features List</h1>
+<button mat-raised-button routerLink="/features/button-menu" (click)="showComponent()">
+  Button Menu
+</button>
+<button mat-raised-button routerLink="/features/custom-table" (click)="showComponent()">
+  Custom Table
+</button>
+<!-- <div *ngIf="!showChildComponents">
+  <button mat-raised-button routerLink="/features/button-menu" (click)="showComponent()">
+    Button Menu
+  </button>
+  <button mat-raised-button routerLink="/features/custom-table" (click)="showComponent()">
+    Custom Table
+  </button>
+</div> -->
+<div *ngIf="showChildComponents">
+  <router-outlet></router-outlet>
+</div>
